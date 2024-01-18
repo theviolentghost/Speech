@@ -1,15 +1,15 @@
 const http = require("http");
 const requestHandler = require("./requestHandler.js");
 
-//require("dotenv").config();
+const port = process.env.PORT || 3000;
 
 const httpServer = http.createServer((req, res) => {
   console.log("request");
   requestHandler.handleHTTPServer(req,res);
 });
 
-httpServer.listen(() => {
-  console.log("HTTP server running");
+httpServer.listen(port, () => {
+  console.log(`HTTP server running on port ${port}`);
 });
 httpServer.on("error", (error) => {
   console.error("HTTP server error:", error);
