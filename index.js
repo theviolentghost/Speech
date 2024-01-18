@@ -1,11 +1,18 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+const http = require("http");
+const requestHandler = require("./requestHandler.js");
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+//require("dotenv").config();
+
+const httpServer = http.createServer((req, res) => {
+  requestHandler.handleHTTPServer(req,res);
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+httpServer.listen(() => {
+  console.log("HTTP server running");
+});
+httpServer.on("error", (error) => {
+  console.error("HTTP server error:", error);
+});
+httpServer.on("close", () => {
+  console.log("HTTP server closed");
 });
