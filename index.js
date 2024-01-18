@@ -4,6 +4,7 @@ const requestHandler = require("./requestHandler.js");
 //require("dotenv").config();
 
 const httpServer = http.createServer((req, res) => {
+  console.log("request");
   requestHandler.handleHTTPServer(req,res);
 });
 
