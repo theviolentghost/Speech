@@ -82,7 +82,7 @@ async function deleteFile(filePath) {
 async function audioToText(filePath, config, useBaseUrl = false) {
   //work to be done
   try {
-    const baseUrl = "https://8ef83af0-0985-4484-b415-1e78c1f88abe-00-1mdmz7b17u4z9.riker.replit.dev/";
+    const baseUrl = "https://speechflow.onrender.com/";
     const audioUrl = useBaseUrl ? baseUrl + filePath : filePath;
     
     const baseConfig = {
