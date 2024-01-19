@@ -1,0 +1,107 @@
+:root {
+  --oxford-blue: #020122;
+  --cinnabar: #F4442E;
+  --sandy-brown: #FC9E4F;
+  --flax: #EDD382;
+  --vanilla: #F2F3AE;
+
+  --c-light: #F66451;
+  --c: var(--cinnabar);
+  --c-dark: #F33016;
+
+  --sb-light: #FDB172;
+  --sb: var(--sandy-brown);
+  --sb-dark: #FD8F35;
+
+  --f-light: #F0D994;
+  --f: var(--flax);
+  --f-dark: #E8C65E;
+
+  --v-light: #F6F7CA;
+  --v: var(--vanilla);
+  --v-dark: #EEEF95;
+
+  --done: #4C956C;
+  --denied: #C94C4C;
+
+  --background-light-theme-light: #fcfcd7;
+  --background-light-theme: var(--v-light);
+  --background-light-theme-dark: var(--vanilla);
+
+  --background-dark-theme-light: #03012e;
+  --background-dark-theme: var(--oxford-blue);
+  --background-dark-theme-dark: #010112;
+
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root{
+    --background: var(--background-light-theme);
+    --background-light: var(--background-light-theme-light);
+    --background-dark: var(--background-light-theme-dark);
+    --text-light: var(--c-light);
+    --text: var(--cinnabar);
+    --text-dark: var(--c-dark);
+    background: var(--background);
+    color: var(--text);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root{
+    --background: var(--background-dark-theme);
+    --background-light: var(--background-dark-theme-light);
+    --background-dark: var(--background-dark-theme-dark);
+    --text-light: var(--v-light);
+    --text: var(--vanilla);
+    --text-dark: var(--v-dark);
+    background: var(--background);
+    color: var(--text);
+  }
+}
+
+loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--background);
+  color: var(--text);
+  z-index: 99999999999999999999999;
+  opacity: 1;
+  transition: 0.45s;
+  flex-direction: column;
+}
+.loader {
+  border: calc(15vw / 20) solid var(--background);
+  border-top: calc(15vw / 20) solid var(--text);
+  border-radius: 50%;
+  width: 15vw;
+  min-width: 50px;
+  aspect-ratio: 1;
+  animation: spin 1s linear infinite;
+  transition: 1.7s;
+}
+
+body {
+  background: var(--background);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+loading p {
+  position: absolute;
+  font-size: 3.2vw;
+  color: var(--text);
+}
