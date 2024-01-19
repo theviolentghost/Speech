@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speechify</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+
+  <link rel="stylesheet" type="text/css" href="../root.css">
+  <link rel="stylesheet" type="text/css" href="./main.css">
+
+  <script src="./server.js"></script>
+  <script src="./menu.js" defer></script>
+  <script src="./main.js" defer></script>
+  <script src="../loader.js"></script>
+</head>
+  <body>
+    <loading>
+      <div class="loader"></div>
+      <p class="loaderText">Loading...</p>
+    </loading>
+
+    <navbar id="navbar">
+      <img class="logo" id="mainLogo" src="../images/speechifyLogo.svg">
+      <div id="navContainer">
+        <a class="header" href="../index.html">Home</a>
+        <a class="header active">Record</a>
+        <a class="header" href="../youtube/index.html">Youtube</a>
+      </div>
+    </navbar>
+    <dashboard id="dashboard">
+      <div id="user">UserName</div>
+    </dashboard>
+    <content id="content">
+      <contentBody>
+        <contentHeader>Start Recording</contentHeader>
+        
+        <canvas id="visualizer" width="512" height="256" style="width:0;"></canvas>
+        <div id="playStopContainer" onclick="toggleMicrophone();">
+          <div id="playStop" class="play"></div>
+        </div>
+        <div id="settings">
+          <div class="setting dropDown" ><!--language select-->
+            <div class="dropDownLabel" for="languageSelect">Language Select</div>
+            <button onclick="openDropDown(this.parentNode.getElementsByClassName('dropDownContent')[0])" class="dropButton" id="languageSelect">English (US)</button>
+            <div id="myDropdown" class="dropDownContent">
+              <input class="inputSearch" type="text" placeholder="Search Language" id="languageInput" onkeyup="dropDownFilter(this.parentNode, this)">
+              <a onmouseup="settings.selectLanguage('en_us')">English (United States)</a>
+              <a onmouseup="settings.selectLanguage('en_au')">English (Austrailia)</a>
+              <a onmouseup="settings.selectLanguage('en_uk')">English (United Kingdom)</a>
+              <a onmouseup="settings.selectLanguage('es')">Spanish</a>
+              <a onmouseup="settings.selectLanguage('fr')">French</a>
+              <a onmouseup="settings.selectLanguage('de')">German</a>
+              <a onmouseup="settings.selectLanguage('it')">Italian</a>
+              <a onmouseup="settings.selectLanguage('ja')">Japanese</a>
+              <a onmouseup="settings.selectLanguage('ko')">Korean</a>
+              <a onmouseup="settings.selectLanguage('pl')">Polish</a>
+              <a onmouseup="settings.selectLanguage('pt')">Portugesse</a>
+              <a onmouseup="settings.selectLanguage('nl')">Dutch</a>
+              <a onmouseup="settings.selectLanguage('hi')">Hindi</a>
+              <a onmouseup="settings.selectLanguage('zh')">Chinese</a>
+              <a onmouseup="settings.selectLanguage('fi')">Finnish</a>
+              <a onmouseup="settings.selectLanguage('ru')">Russian</a>
+              <a onmouseup="settings.selectLanguage('tr')">Turkish</a>
+              <a onmouseup="settings.selectLanguage('vi')">Vietnamese</a>
+              <a onmouseup="settings.selectLanguage('uk')">Ukrainian</a>
+            </div>
+          </div>
+          <div class="setting toggle">
+            <div class=togglable>
+              <div class="toggleLabel">Summerize:</div>
+              <label class="switch" id="toggleSummary">
+                <input id="summerizeCheckbox" type="checkbox">
+                <span class="slider"></span><!--class = round-->
+              </label>
+            </div>
+            
+            <div id="summaryDetails" class="hidden">
+            <div class="setting dropDown" ><!--language select-->
+              <div class="dropDownLabel" for="summaryModelSelect">Summary Model</div>
+              <button onclick="openDropDown(this.parentNode.getElementsByClassName('dropDownContent')[0])" class="dropButton" id="summaryModelSelect">Informative</button>
+              <div id="myDropdown" class="dropDownContent">
+                <!-- <input class="inputSearch" type="text" placeholder="Search Language" id="sumerizeTypeInput" onkeyup="dropDownFilter(this.parentNode, this)"> -->
+                <a onmouseup="settings.selectSummaryModel('informative')">Informative</a>
+                <a onmouseup="settings.selectSummaryModel('conversational')">Conversational</a>
+                <a onmouseup="settings.selectSummaryModel('catchy')">Catchy</a>
+
+              </div>
+            </div>
+              <div class="setting dropDown" ><!--language select-->
+                <div class="dropDownLabel" for="sumerizeTypeSelect">Sumerize Type</div>
+                <button onclick="openDropDown(this.parentNode.getElementsByClassName('dropDownContent')[0])" class="dropButton" id="sumerizeTypeSelect">Bullets</button>
+                <div id="myDropdown" class="dropDownContent">
+                  <!-- <input class="inputSearch" type="text" placeholder="Search Language" id="sumerizeTypeInput" onkeyup="dropDownFilter(this.parentNode, this)"> -->
+                  <a onmouseup="settings.selectSummaryType('bullets')">Bullets</a>
+                  <a onmouseup="settings.selectSummaryType('bullets_verbose')">Bullets Verbose</a>
+                  <a onmouseup="settings.selectSummaryType('gist')">Gist</a>
+                  <a onmouseup="settings.selectSummaryType('headline')">Headline</a>
+                  <a onmouseup="settings.selectSummaryType('paragraph')">Paragraph</a>
+
+                </div>
+              </div>
+
+
+
+              
+            </div>
+          </div>
+
+
+          
+        </div>
+
+
+        
+        <div id="resultContainer">
+          <h1 id="result">The Text From the Audio will Appear Here...</h1>
+        </div>
+      </contentBody>
+    </content>
+  </body>
+</html>
